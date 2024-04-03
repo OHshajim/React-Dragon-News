@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 const Root = () => {
     return (
-        <div>
+        <div className="text-4xl font-Poppins">
             <Outlet></Outlet>
         </div>
     );
