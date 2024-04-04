@@ -27,11 +27,11 @@ const Navbar = () => {
                 <div className="navbar-end flex items-center  ">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar mr-3">
                         <div className="w-10 rounded-full">
-                            <img alt="Tailwind CSS Navbar component" src={userPhoto}/>
+                            <img alt="Tailwind CSS Navbar component" src={userPhoto} />
                         </div>
                     </div>
 
-                    <a className="btn bg-[#403F3F] px-10 text-white text-lg font-semibold">Log In</a>
+                    <Link to="/login" className="btn bg-[#403F3F] px-10 text-white text-lg font-semibold">Log In</Link>
                 </div>
             </div>
         </div>

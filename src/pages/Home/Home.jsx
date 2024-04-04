@@ -17,7 +17,7 @@ const Home = () => {
             <Navbar />
             <div className="grid grid-cols-4 gap-6">
                 <div><LeftSideNav /></div>
-                <div className="border col-span-2">
+                <div className="col-span-2">
                     <h3 className="text-xl font-semibold mb-6">Dragon News Home</h3>
                     <div>
                         {
