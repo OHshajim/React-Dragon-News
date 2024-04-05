@@ -2,8 +2,11 @@ import { Link, useLoaderData, useParams } from "react-router-dom";
 import Header from "../Shared/Header/Header";
 import RightSideNav from "../Shared/RightSide/RightSideNav";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const NewsDetails = () => {
+    const { loading } = useContext(AuthContext)
     const Id = useParams()
     const News = useLoaderData()
     // console.log(Id._id, News);
@@ -12,6 +15,10 @@ const NewsDetails = () => {
     const { details, title, image_url } = CurrentNews[0]
     return (
         <div className="max-w-[1700px] mx-auto ">
+            {
+                loading && <div className="flex justify-center items-center my-20"><span className="w-20 loading loading-spinner text-error"></span></div>
+
+            }
             <Header />
             <div className="grid md:grid-cols-4 gap-5">
                 <div className="col-span-3">

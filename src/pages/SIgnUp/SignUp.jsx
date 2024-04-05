@@ -2,22 +2,31 @@ import { Link } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-    const { Signup } = useContext(AuthContext)
+    const { Signup ,loading} = useContext(AuthContext)
+    const navigate = useNavigate()
     const handleSignUp = e => {
         e.preventDefault()
         const form = new FormData(e.currentTarget);
-        const name = form.get('name');
+        // const name = form.get('name');
         const email = form.get('email');
         const password = form.get('password');
 
-        Signup( email, password)
-            .then(result => { console.log(result.user) })
+        Signup(email, password)
+            .then(result => {
+                console.log(result.user)
+                navigate("/")
+            })
             .catch(error => console.error(error))
     }
     return (
         <div className="max-w-[1700px] mx-auto ">
+            {
+                loading && <div className="flex justify-center items-center my-20"><span className="w-20 loading loading-spinner text-error"></span></div>
+
+            }
             <Navbar />
             <div className="flex items-center justify-center ">
                 <div className=" ">

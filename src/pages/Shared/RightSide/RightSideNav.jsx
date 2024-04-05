@@ -2,10 +2,13 @@ import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from "react-ic
 import QZone1 from "../../../assets/qZone1.png"
 import QZone2 from "../../../assets/qZone2.png"
 import QZone3 from "../../../assets/qZone3.png"
+import { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
 const RightSideNav = () => {
+    const { user } = useContext(AuthContext)
     return (
         <div className="px-3">
-            <div>
+            <div className={user && "hidden"}>
                 <h3 className="text-xl font-semibold mb-3">Login With</h3>
                 <button className="btn w-full btn-outline my-3">
                     <FaGoogle />

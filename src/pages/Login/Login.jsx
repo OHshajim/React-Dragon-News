@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const { login } = useContext(AuthContext)
+    const { login, loading } = useContext(AuthContext)
+    const navigate = useNavigate()
     const handleLogin = e => {
         e.preventDefault()
         const form = new FormData(e.currentTarget);
@@ -13,12 +15,19 @@ const Login = () => {
         const password = form.get('password');
 
         login(email, password)
-            .then(result => { console.log(result.user) })
+            .then(result => {
+                console.log(result.user)
+                navigate("/")
+            })
             .catch(error => console.error(error))
 
     }
     return (
         <div className="max-w-[1700px] mx-auto ">
+            {
+                loading && <div className="flex justify-center items-center my-20"><span className="w-20 loading loading-spinner text-error"></span></div>
+
+            }
             <Navbar />
             <div className="flex items-center justify-center ">
                 <div className=" ">
