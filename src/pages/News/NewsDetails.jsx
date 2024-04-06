@@ -9,9 +9,9 @@ const NewsDetails = () => {
     const { loading } = useContext(AuthContext)
     const Id = useParams()
     const News = useLoaderData()
-    // console.log(Id._id, News);
+    console.log( News);
     const CurrentNews = News.filter(news => news._id === Id._id)
-    console.log(CurrentNews[0]);
+    // console.log(CurrentNews[0]);
     const { details, title, image_url } = CurrentNews[0]
     return (
         <div className="max-w-[1700px] mx-auto ">
