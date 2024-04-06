@@ -4,11 +4,17 @@ import QZone2 from "../../../assets/qZone2.png"
 import QZone3 from "../../../assets/qZone3.png"
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
-const RightSideNav = () => {
-    const { user, GoogleLogin } = useContext(AuthContext)
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
-    const googleLogin = () => {
-        GoogleLogin()
+
+const GoogleProvider = new GoogleAuthProvider();
+const GithubProvider = new GithubAuthProvider();
+
+const RightSideNav = () => {
+    const { user, GLogin } = useContext(AuthContext)
+
+    const LoginWithOtherAccount = (provider) => {
+        GLogin(provider)
             .then(result => console.log(result))
             .catch(error => console.error(error))
     }
@@ -16,11 +22,11 @@ const RightSideNav = () => {
         <div className="px-3">
             <div className={user && "hidden"}>
                 <h3 className="text-xl font-semibold mb-3">Login With</h3>
-                <button onClick={googleLogin} className="btn w-full btn-outline my-3">
+                <button onClick={() => LoginWithOtherAccount(GoogleProvider)} className="btn w-full btn-outline my-3">
                     <FaGoogle />
                     Login With Google
                 </button> <br />
-                <button className="btn w-full btn-outline">
+                <button onClick={() => LoginWithOtherAccount(GithubProvider)} className="btn w-full btn-outline">
                     <FaGithub />
                     Login With Github
                 </button>
