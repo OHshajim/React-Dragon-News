@@ -9,7 +9,7 @@ const NewsDetails = () => {
     const { loading } = useContext(AuthContext)
     const Id = useParams()
     const News = useLoaderData()
-    console.log( News);
+    // console.log( News);
     const CurrentNews = News.filter(news => news._id === Id._id)
     // console.log(CurrentNews[0]);
     const { details, title, image_url } = CurrentNews[0]
