@@ -5,12 +5,18 @@ import QZone3 from "../../../assets/qZone3.png"
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 const RightSideNav = () => {
-    const { user } = useContext(AuthContext)
+    const { user, GoogleLogin } = useContext(AuthContext)
+
+    const googleLogin = () => {
+        GoogleLogin()
+            .then(result => console.log(result))
+            .catch(error => console.error(error))
+    }
     return (
         <div className="px-3">
             <div className={user && "hidden"}>
                 <h3 className="text-xl font-semibold mb-3">Login With</h3>
-                <button className="btn w-full btn-outline my-3">
+                <button onClick={googleLogin} className="btn w-full btn-outline my-3">
                     <FaGoogle />
                     Login With Google
                 </button> <br />
